@@ -1,5 +1,5 @@
 """
-URL configuration for demo project.
+URL configuration for crud project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.0/topics/http/urls/
@@ -14,15 +14,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
 from django.contrib import admin
 from django.urls import path
-from api.views import *
+from api import views
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("student/<int:pk>", student_details),
-    path("students/", student_list),
-    path("student/create/", student_create),
-
+    path('admin/', admin.site.urls),
+    # path('student/', views.student_api),
+    path('student/', views.StudentAPI.as_view()),
 ]
