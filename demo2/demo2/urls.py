@@ -1,5 +1,5 @@
 """
-URL configuration for demo1 project.
+URL configuration for demo2 project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.0/topics/http/urls/
@@ -20,6 +20,11 @@ from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('student/', views.student_api),
-    path('student/<int:pk>', views.student_api)
+    # path('student/', views.StudentList.as_view()),
+    # path('student/', views.StudentCreate.as_view()),
+    # path('student/<int:pk>', views.StudentRetrieve.as_view()),
+    # path('student/<int:pk>', views.StudentUpdate.as_view()),
+    # path('student/<int:pk>', views.StudentDelete.as_view()),
+    path('student/', views.LCStudentAPI.as_view()),
+    path('student/<int:pk>', views.RUDStudentAPI.as_view()),
 ]
