@@ -1,5 +1,5 @@
 """
-URL configuration for demo4 project.
+URL configuration for todo project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.0/topics/http/urls/
@@ -21,9 +21,16 @@ from rest_framework.routers import DefaultRouter
 
 router=DefaultRouter()
 
-router.register('student',views.StudentReadOnlyModelViewset,basename='student')
+# router.register('task',views.TaskViewSet,basename='task')
+router.register('task',views.TaskModelViewSet, basename='task')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include(router.urls)),
+    # path('task/', views.TaskAPI.as_view()),
+    # path('task/<int:id>', views.TaskAPI.as_view()),
+    # path('task/', views.LCTaskAPI.as_view()),
+    # path('task/<int:pk>', views.RUDTaskAPI.as_view()),
+    # path('task/',views.TaskListCreate.as_view()),
+    # path('task/<int:pk>',views.TaskRetrieveUpdateDestroy.as_view()),
+    path('',include(router.urls))
 ]

@@ -10,15 +10,6 @@ from rest_framework.views import APIView
 
 # Function based api view
 
-# @api_view(['GET','POST'])
-# def hello_world(request):
-#     if request.method == 'GET':
-#         return Response({'msg':'This is GET Request'})
-    
-#     if request.method == 'POST':
-#         print(request.data)
-#         return Response({'msg':'This is POST Request', 'data': request.data})
-
 # @api_view(['GET','POST','PUT','DELETE'])
 # def student_api(request):
 #     if request.method == 'GET':
