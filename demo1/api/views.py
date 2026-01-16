@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
 from .models import Student
 from .serializers import StudentSerializer
 from rest_framework import status
 from rest_framework.views import APIView
+from rest_framework.authentication import BaseAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
@@ -45,6 +47,8 @@ from rest_framework.views import APIView
 #         return Response({'msg':'Data Deleted'})
 
 @api_view(['GET','POST','PUT','PATCH','DELETE'])
+@authentication_classes([BaseAuthentication])
+@permission_classes([IsAuthenticated])
 def student_api(request, pk=None):
     if request.method == 'GET':
         id = pk
@@ -88,7 +92,7 @@ def student_api(request, pk=None):
         return Response({'msg':'Data Deleted'},status=status.HTTP_200_OK)
     
 # Class based api view
-class StudentAPI(APIView):
+# class StudentAPI(APIView):
     def get(self, request, pk=None, format=None):
         id = pk
         if id is not None:

@@ -1,5 +1,5 @@
 """
-URL configuration for demo4 project.
+URL configuration for demo5 project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.0/topics/http/urls/
@@ -18,7 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from api import views
 from rest_framework.routers import DefaultRouter
-
+# Generating token using client usernname and password
+# from rest_framework.authtoken.views import obtain_auth_token
+# Generating token using client usernname and password handling custom response
+from api.auth import CustomAuthToken
 router=DefaultRouter()
 
 router.register('student',views.StudentModelViewset,basename='student')
@@ -26,5 +29,7 @@ router.register('student',views.StudentModelViewset,basename='student')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(router.urls)),
-    path('',include('rest_framework.urls', namespace='rest_framework'))
+    path('auth/',include('rest_framework.urls', namespace='rest_framework')),
+    # path('gettoken/',obtain_auth_token),
+    # path('gettoken/',CustomAuthToken.as_view())
 ]
